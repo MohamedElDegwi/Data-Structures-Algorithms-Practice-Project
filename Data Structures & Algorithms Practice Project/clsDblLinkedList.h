@@ -191,5 +191,13 @@ public:
     {
         return (_Size == 0 ? true : false);
     }
+
+    void Clear()
+    {
+        while (_Size >0)
+        {
+            DeleteFirstNode();
+        }
+    }
 };
 
