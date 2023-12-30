@@ -96,7 +96,6 @@ public:
 
     }
 
-
     T GetItem(int index)
     {
         return OriginalArray[index];
@@ -127,5 +126,32 @@ public:
         _TempArray = new T[0];
         delete[] OriginalArray;
         OriginalArray = _TempArray;
+    }
+
+    bool DeleteItemAt(int Index)
+    {
+        if (Index <0 || Index >= _Size)
+        {
+            return false;
+        }
+
+        _Size--;
+
+        _TempArray = new T[_Size];
+
+        for (int i = 0; i < Index; i++)
+        {
+                _TempArray[i] = OriginalArray[i];
+        }
+
+        for (int i = Index +1; i < _Size + 1; i++)
+        {
+            _TempArray[i - 1] = OriginalArray[i];
+        }
+
+        delete[] OriginalArray;
+        OriginalArray = _TempArray;
+    
+        return true;
     }
 };

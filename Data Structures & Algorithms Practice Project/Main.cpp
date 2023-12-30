@@ -16,19 +16,14 @@ int main()
     cout << "\nIs Empty?  " << MyDynamicArray.IsEmpty();
     cout << "\nArray Size: " << MyDynamicArray.Size() << "\n";
     cout << "\nArray Items: \n";
-
     MyDynamicArray.PrintList();
 
+    MyDynamicArray.DeleteItemAt(2);
 
-    std::cout << "\nItem 2 is : " << MyDynamicArray.GetItem(2)<<"\n";
-
-    MyDynamicArray.Reverse();
-
+    std::cout << "\nArray items after deleting item[2] : ";
+    std::cout<<"\n" << MyDynamicArray.Size()<<"\n";
     MyDynamicArray.PrintList();
 
-    MyDynamicArray.Clear();
-
-    MyDynamicArray.PrintList();
 
     system("pause>0");
 }
