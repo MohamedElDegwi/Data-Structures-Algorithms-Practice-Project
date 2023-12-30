@@ -254,5 +254,4 @@ public:
         return InsertAt(_Size, value);
 
     }
-
 };
