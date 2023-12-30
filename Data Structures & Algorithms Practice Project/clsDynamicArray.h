@@ -154,4 +154,16 @@ public:
     
         return true;
     }
+
+    bool DeleteFirstItem()
+    {
+        DeleteItemAt(0);
+        return true;
+    }
+
+    bool DeleteLastItem()
+    {
+        DeleteItemAt(_Size - 1);
+        return true;
+    }
 };

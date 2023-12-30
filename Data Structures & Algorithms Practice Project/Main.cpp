@@ -18,10 +18,14 @@ int main()
     cout << "\nArray Items: \n";
     MyDynamicArray.PrintList();
 
-    MyDynamicArray.DeleteItemAt(2);
+    MyDynamicArray.DeleteFirstItem();
+    cout << "\nArray Items after deleting FirstItem: \n";
+    cout << "\nArray Size: " << MyDynamicArray.Size() << "\n";
+    MyDynamicArray.PrintList();
 
-    std::cout << "\nArray items after deleting item[2] : ";
-    std::cout<<"\n" << MyDynamicArray.Size()<<"\n";
+    MyDynamicArray.DeleteLastItem();
+    cout << "\nArray Items after deleting LastItem: \n";
+    cout << "\nArray Size: " << MyDynamicArray.Size() << "\n";
     MyDynamicArray.PrintList();
 
 
