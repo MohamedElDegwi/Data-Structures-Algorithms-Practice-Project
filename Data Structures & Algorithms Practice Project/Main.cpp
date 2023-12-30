@@ -18,14 +18,8 @@ int main()
     cout << "\nArray Items: \n";
     MyDynamicArray.PrintList();
 
-    MyDynamicArray.DeleteFirstItem();
-    cout << "\nArray Items after deleting FirstItem: \n";
-    cout << "\nArray Size: " << MyDynamicArray.Size() << "\n";
-    MyDynamicArray.PrintList();
+    MyDynamicArray.InsertAt(2, 500);
 
-    MyDynamicArray.DeleteLastItem();
-    cout << "\nArray Items after deleting LastItem: \n";
-    cout << "\nArray Size: " << MyDynamicArray.Size() << "\n";
     MyDynamicArray.PrintList();
 
 

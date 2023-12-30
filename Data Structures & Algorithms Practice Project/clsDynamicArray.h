@@ -1,6 +1,6 @@
 #pragma once
-#include <iostream>
 
+#include <iostream>
 using namespace std;
 
 template <class T>
@@ -35,7 +35,7 @@ public:
     bool SetItem(int index, T Value)
     {
 
-        if (index >= _Size || _Size < 0)
+        if (index >= _Size)
         {
             return false;
         }
@@ -71,12 +71,6 @@ public:
 
     void Resize(int NewSize)
     {
-
-        if (NewSize < 0)
-        {
-            NewSize = 0;
-        };
-
         _TempArray = new T[NewSize];
 
         //limit the original size to the new size if it is less.
@@ -93,12 +87,6 @@ public:
 
         delete[] OriginalArray;
         OriginalArray = _TempArray;
-
-    }
-
-    T GetItem(int index)
-    {
-        return OriginalArray[index];
 
     }
 
@@ -128,9 +116,16 @@ public:
         OriginalArray = _TempArray;
     }
 
-    bool DeleteItemAt(int Index)
+    T GetItem(int index)
     {
-        if (Index <0 || Index >= _Size)
+        return OriginalArray[index];
+
+    }
+
+    bool DeleteItemAt(int index)
+    {
+
+        if (index >= _Size || index < 0)
         {
             return false;
         }
@@ -139,32 +134,35 @@ public:
 
         _TempArray = new T[_Size];
 
-        for (int i = 0; i < Index; i++)
+        //copy all before index
+        for (int i = 0; i < index; i++)
         {
-                _TempArray[i] = OriginalArray[i];
+            _TempArray[i] = OriginalArray[i];
         }
 
-        for (int i = Index +1; i < _Size + 1; i++)
+        //copy all after index
+        for (int i = index + 1; i < _Size + 1; i++)
         {
             _TempArray[i - 1] = OriginalArray[i];
         }
 
         delete[] OriginalArray;
         OriginalArray = _TempArray;
-    
         return true;
+
     }
 
-    bool DeleteFirstItem()
+    void DeleteFirstItem()
     {
+
         DeleteItemAt(0);
-        return true;
+
     }
 
-    bool DeleteLastItem()
+    void DeleteLastItem()
     {
+
         DeleteItemAt(_Size - 1);
-        return true;
     }
 
     int Find(T Value)
@@ -177,18 +175,51 @@ public:
             }
         }
         return -1;
+
     }
 
-    bool DeleteItem(T Value)
-    {
-        int Index = Find(Value);
+    bool DeleteItem(T Value) {
 
-        if (Index == -1)
+        int index = Find(Value);
+
+        if (index == -1)
         {
             return false;
         }
 
-        DeleteItemAt(Index);
-        return false;
+        DeleteItemAt(index);
+        return true;
+
+    }
+
+    bool InsertAt(T index, T value) {
+
+        if (index > _Size || index < 0)
+        {
+            return false;
+        }
+
+        _Size++;
+
+        _TempArray = new T[_Size];
+
+        //copy all before index
+        for (int i = 0; i < index; i++)
+        {
+            _TempArray[i] = OriginalArray[i];
+        }
+
+        _TempArray[index] = value;
+
+        //copy all after index
+        for (int i = index; i < _Size - 1; i++)
+        {
+            _TempArray[i + 1] = OriginalArray[i];
+        }
+
+        delete[] OriginalArray;
+        OriginalArray = _TempArray;
+        return true;
+
     }
 };
