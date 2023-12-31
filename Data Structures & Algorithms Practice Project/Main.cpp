@@ -1,56 +1,55 @@
 #include <iostream>
-#include "clsMyQueueArr.h"
-
-using namespace std;
+#include "clsMyString.h"
 
 int main()
 {
+    std::cout << "\n\n\t\t\t\t\t\tUndo/Redo Project\n\n";
 
-    clsMyQueueArr <int> MyQueue;
+    clsMyString S1;
 
-    MyQueue.push(10);
-    MyQueue.push(20);
-    MyQueue.push(30);
-    MyQueue.push(40);
-    MyQueue.push(50);
+    std::cout << "\n S1 = " << S1.GetStrValue() << "\n";
 
-    cout << "\nQueue: \n";
-    MyQueue.Print();
+    S1.SetStrValue("Mohamed");
 
-    cout << "\nQueue Size: " << MyQueue.Size();
-    cout << "\nQueue Front: " << MyQueue.front();
-    cout << "\nQueue Back: " << MyQueue.back();
+    std::cout << "\n S1 = " << S1.GetStrValue();
 
-    MyQueue.pop();
+    S1.SetStrValue("Mohamed2");
 
-    cout << "\n\nQueue after pop() : \n";
-    MyQueue.Print();
+    std::cout << "\n S1 = " << S1.GetStrValue();
 
-    cout << "\n\n Item(2) : " << MyQueue.GetItem(2);
+    S1.SetStrValue("Mohamed3");
 
-    MyQueue.Reverse();
-    cout << "\n\nQueue after reverse() : \n";
-    MyQueue.Print();
+    std::cout << "\n S1 = " << S1.GetStrValue();
 
-    MyQueue.UpdateItem(2, 600);
-    cout << "\n\nQueue after updating Item(2) to 600 : \n";
-    MyQueue.Print();
+    std::cout << "\n\nUndo:";
+    std::cout << "\n--------\n";
 
-    MyQueue.InsertAfter(2, 800);
-    cout << "\n\nQueue after Inserting 800 after Item(2) : \n";
-    MyQueue.Print();
+    S1.Undo();
 
-    MyQueue.InsertAtFront(1000);
-    cout << "\n\nQueue after Inserting 1000 at front: \n";
-    MyQueue.Print();
+    std::cout << "S1 after undo : " << S1.GetStrValue() << "\n";
 
-    MyQueue.InsertAtBack(2000);
-    cout << "\n\nQueue after Inserting 2000 at back: \n";
-    MyQueue.Print();
+    S1.Undo();
 
-    MyQueue.Clear();
-    cout << "\n\nQueue after Clear(): \n";
-    MyQueue.Print();
+    std::cout << "S1 after undo : " << S1.GetStrValue() << "\n";
+
+    S1.Undo();
+
+    std::cout << "S1 after undo : " << S1.GetStrValue() << "\n";
+
+    std::cout << "\n\nRedo:";
+    std::cout << "\n--------\n";
+
+    S1.Redo();
+
+    std::cout << "S1 after Redo : " << S1.GetStrValue() << "\n";
+
+    S1.Redo();
+
+    std::cout << "S1 after Redo : " << S1.GetStrValue() << "\n";
+
+    S1.Redo();
+
+    std::cout << "S1 after Redo : " << S1.GetStrValue() << "\n";
 
     system("pause>0");
 }
